@@ -1,22 +1,22 @@
 {
-  "name": "website-simple",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "webpack",
+  "description": "Include Bootstrap's source Sass and individual JavaScript plugins with Webpack.",
+  "version": "0.0.0",
+  "private": true,
+  "repository": "twbs/examples",
+  "license": "MIT",
+  "stackblitz": {
+    "startCommand": "npm start"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack serve",
+    "build": "webpack build --mode=production",
+    "test": "npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bph838/website-simple.git"
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.8"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bph838/website-simple/issues"
-  },
-  "homepage": "https://github.com/bph838/website-simple#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.23",
     "css-loader": "^7.1.2",
@@ -28,9 +28,5 @@
     "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
-  },
-  "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.8"
   }
 }
