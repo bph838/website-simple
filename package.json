@@ -15,7 +15,9 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.8"
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
+    "jquery": "^3.7.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.23",
@@ -23,11 +25,13 @@
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.5",
     "postcss-loader": "^8.2.0",
+    "prettier": "^3.0.0-alpha.6",
     "sass": "^1.97.2",
     "sass-loader": "^16.0.6",
     "style-loader": "^4.0.0",
     "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.2"
+    "webpack-dev-server": "^5.2.2",
+    "terser-webpack-plugin": "5.3.16"
   }
 }

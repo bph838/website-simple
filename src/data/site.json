@@ -1,0 +1,35 @@
+{
+  "title": "Simple Website",
+  "content": {
+    "hero": {
+      "image": "images/hero.png",
+      "text": "Simple Website hero"
+    },
+    "sections": [
+      {
+        "title": "Section 1",
+        "type": "wrappedText",
+        "image": "images/image.png",
+        "text": ["line 1", "line 2", "line 3"]
+      },
+      {
+        "title": "Section 2",
+        "type": "leftImage",
+        "image": "images/image.png",
+        "text": ["line 1", "line 2", "line 3"]
+      },
+      {
+        "title": "Section 3",
+        "type": "rightImage",
+        "image": "images/image.png",
+        "text": ["line 1", "line 2", "line 3"]
+      },
+      {
+        "title": "Section 4",
+        "type": "noImage",
+        "image": "images/image.png",
+        "text": ["line 1", "line 2", "line 3"]
+      }
+    ]
+  }
+}
