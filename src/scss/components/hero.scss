@@ -1,0 +1,21 @@
+.hero {
+  @extend .d-flex;
+  @extend .align-items-center;
+  @extend .text-white;
+
+  padding-top: 90px;
+  min-height: 80vh;  
+
+  .container {
+    background-color: darkgrey;
+    opacity: 0.8;
+    h1 {
+      @extend .display-4;
+      @extend .fw-bold;
+
+      color: black;
+      font-size: 64px;
+      text-shadow: -2px 2px 3px white;
+    }
+  }
+}
