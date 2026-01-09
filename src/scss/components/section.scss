@@ -1,0 +1,72 @@
+.sections {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  @include respond(tablet) {
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  @include respond(pc) {
+    margin-left: 5em;
+    margin-right: 5em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+  }
+}
+
+.section {
+  &::after {
+    content: ""; // required for pseudo-elements
+    display: block; // makes it appear like an <hr>
+    border-bottom: 1px solid #ccc; // color & thickness
+    margin: 20px 0; // spacing above & below
+  }
+}
+
+.sectionContent {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.sectionImageWrapDiv {
+  width: 150px;
+  height: 150px;
+  display: block;
+  float: left;
+  img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.sectionImageLeftDiv{
+  display: none;
+    @include respond(tablet, pc) {
+      flex: 0 0 33%;
+      display: block;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+}
+
+.sectionImageRightDiv{
+   display: none;
+    @include respond(tablet, pc) {
+      flex: 0 0 33%;
+      display: block;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+}

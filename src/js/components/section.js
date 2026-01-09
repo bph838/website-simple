@@ -1,0 +1,166 @@
+export function renderSection(sectionsDiv, data) {
+  if (!data) {
+    console.error("There is no data to render");
+    return;
+  }
+  if (!data.type) {
+    console.error("There is no section type to render");
+    return;
+  }
+
+  if (process.env.NODE_ENV === "development") {
+    if (data.title) {
+      console.log(`Rendering Section ${data.title}`);
+    } else {
+      console.log(`Rendering Section`);
+    }
+  }
+
+  const pageSection = renderSectionHolder(sectionsDiv);
+
+  //if there is a title lets render it
+  if (data.title) {
+    const titleSectionDiv = document.createElement("div");
+    titleSectionDiv.className = "sectionTitle";
+    pageSection.appendChild(titleSectionDiv);
+    const titleText = document.createElement("h2");
+    titleText.innerHTML = data.title;
+    titleSectionDiv.appendChild(titleText);
+  }
+
+  const titleSectionInfoDiv = document.createElement("div");
+  titleSectionInfoDiv.className = "sectionInfoHolder";
+  pageSection.appendChild(titleSectionInfoDiv);
+
+  switch (data.type) {
+    case "wrappedTextLeft":
+      renderSectionWrappedTextLeft(titleSectionInfoDiv, data);
+      break;
+    case "leftImage":
+      renderSectionLeftImage(titleSectionInfoDiv, data);
+      break;
+    case "rightImage":
+      renderSectionRightImage(titleSectionInfoDiv, data);
+      break;
+    case "noImage":
+      renderSectionNoImage(titleSectionInfoDiv, data);
+      break;
+  }
+}
+
+function renderSectionHolder(sectionsDiv) {
+  const pageSection = document.createElement("section");
+  pageSection.className = "section";
+  sectionsDiv.appendChild(pageSection);
+
+  const pageSectionFlexDiv = document.createElement("div");
+  pageSectionFlexDiv.className = "sectionContent";
+  pageSection.appendChild(pageSectionFlexDiv);
+
+  return pageSectionFlexDiv;
+}
+
+function renderSectionWrappedTextLeft(pageSection, data) {
+  if (!data.text || !data.image) {
+    console.error("Unable to render renderSectionWrappedTextLeft");
+    return;
+  }
+
+  const sectionImageDiv = document.createElement("div");
+  sectionImageDiv.className = "sectionImageWrapDiv";
+  pageSection.appendChild(sectionImageDiv);
+
+  const sectionImage = document.createElement("img");
+  sectionImage.src = data.image;
+  sectionImageDiv.appendChild(sectionImage);
+
+  const sectionTextDiv = document.createElement("div");
+  sectionTextDiv.className = "sectionTextDiv";
+  pageSection.appendChild(sectionTextDiv);
+
+  data.text.forEach((text) => {
+    renderSectionText(pageSection, text);
+  });
+}
+
+function renderSectionLeftImage(pageSection, data) {
+  if (!data.text || !data.image) {
+    console.error("Unable to render renderSectionWrappedTextLeft");
+    return;
+  }
+
+  pageSection.style.display = "flex";
+  // Optionally, you can add other flex properties
+  pageSection.style.flexDirection = "row"; // or "column"
+
+  const sectionImageDiv = document.createElement("div");
+  sectionImageDiv.className = "sectionImageLeftDiv";
+  pageSection.appendChild(sectionImageDiv);
+
+  const sectionImage = document.createElement("img");
+  sectionImage.src = data.image;
+  sectionImageDiv.appendChild(sectionImage);
+
+  const sectionTextDiv = document.createElement("div");
+  sectionTextDiv.className = "sectionTextDiv";
+  pageSection.appendChild(sectionTextDiv);
+
+  data.text.forEach((text) => {
+    renderSectionText(pageSection, text);
+  });
+}
+
+function renderSectionRightImage(pageSection, data) {
+  if (!data.text || !data.image) {
+    console.error("Unable to render renderSectionWrappedTextLeft");
+    return;
+  }
+
+  pageSection.style.display = "flex";
+  // Optionally, you can add other flex properties
+  pageSection.style.flexDirection = "row"; // or "column"
+ 
+
+  const sectionTextDiv = document.createElement("div");
+  sectionTextDiv.className = "sectionTextDiv";
+  pageSection.appendChild(sectionTextDiv);
+
+  data.text.forEach((text) => {
+    renderSectionText(pageSection, text);
+  });
+
+  const sectionImageDiv = document.createElement("div");
+  sectionImageDiv.className = "sectionImageRightDiv";
+  pageSection.appendChild(sectionImageDiv);
+
+  const sectionImage = document.createElement("img");
+  sectionImage.src = data.image;
+  sectionImageDiv.appendChild(sectionImage);
+
+}
+
+function renderSectionNoImage(pageSection, data) {
+  if (!data.text) {
+    console.error("Unable to render renderSectionWrappedTextLeft");
+    return;
+  }
+
+  pageSection.style.display = "flex";  
+  pageSection.style.flexDirection = "row"; // or "column"
+ 
+
+  const sectionTextDiv = document.createElement("div");
+  sectionTextDiv.className = "sectionTextDiv";
+  pageSection.appendChild(sectionTextDiv);
+
+  data.text.forEach((text) => {
+    renderSectionText(pageSection, text);
+  });
+
+}
+
+function renderSectionText(pageSection, text) {
+  const sectionParatext = document.createElement("p");
+  sectionParatext.innerHTML = text;
+  pageSection.appendChild(sectionParatext);
+}

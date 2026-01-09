@@ -1,5 +1,5 @@
 
-export function renderHero(app, data) {
+export function renderHero(data) {
     console.log("renderHero");
   const heroSection = document.createElement("section");
   heroSection.className = "hero";
@@ -22,21 +22,3 @@ export function renderHero(app, data) {
 
   app.appendChild(heroSection); 
 }
-
-/*
-  // Render hero
-  const heroDiv = document.createElement("div");
-  heroDiv.className = "hero";
-  heroDiv.innerHTML = `
-  <img src="${data.content.hero.image}" alt="Hero Image">
-  <h1>${data.content.hero.text}</h1>
-`;
-  app.appendChild(heroDiv); */
-
-/*
- <section class="hero d-flex align-items-center text-white">
-      <div class="container text-center">
-        <h1 class="display-4 fw-bold">Chiltern Delay Analysise</h1>
-      </div>
-    </section>
-    */
