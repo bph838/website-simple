@@ -16,6 +16,7 @@ module.exports = (env, argv) => {
 
     entry: {
       index: "./src/js/index.js", // for index.html
+      events: "./src/js/events.js", // for events.html
       aboutus: "./src/js/aboutus.js", // for about.html
     },
     output: {
@@ -46,6 +47,15 @@ module.exports = (env, argv) => {
         template: "./src/template.ejs",
         chunks: ["index"], // only include index.js
         title: SITE_TITLE,
+        templateParameters: {
+          siteName: SITE_TITLE,
+        },
+      }),
+      new HtmlWebpackPlugin({
+        filename: "events.html",
+        template: "./src/template.ejs",
+        chunks: ["events"], // only include events.js
+        title: "Events - " + SITE_TITLE,        
         templateParameters: {
           siteName: SITE_TITLE,
         },
