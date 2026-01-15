@@ -8,7 +8,6 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { SITE_TITLE } = require("./src/js/constants.js");
 
-
 module.exports = (env, argv) => {
   const isProd = argv.mode === "production";
 
@@ -21,6 +20,7 @@ module.exports = (env, argv) => {
       filename: "main.js",
       path: path.resolve(__dirname, "dist"),
       clean: true,
+      publicPath: "/",
     },
 
     devServer: {
@@ -30,13 +30,26 @@ module.exports = (env, argv) => {
     },
 
     plugins: [
-      new HtmlWebpackPlugin({ template: "./src/index.html",title:SITE_TITLE }),
+      /*new HtmlWebpackPlugin({
+        template: "./src/index.html",
+        title: SITE_TITLE,
+      }),*/
       new CopyWebpackPlugin({
         patterns: [
-          { from: "src/images", to: "images" }
-          //,{ from: "src/favicon.ico", to: "." },
+          { from: "src/images", to: "images" },
+          { from: "src/favicon.ico", to: "." },
         ],
       }),
+      new HtmlWebpackPlugin({
+        filename: "index.html",
+        template: "./src/template.html",
+        title:  SITE_TITLE,
+      }),   
+      new HtmlWebpackPlugin({
+        filename: "about.html",
+        template: "./src/template.html",
+        title:  "About - " + SITE_TITLE,
+      }),    
     ],
 
     optimization: {
@@ -45,7 +58,7 @@ module.exports = (env, argv) => {
         new TerserPlugin({
           terserOptions: {
             compress: {
-              drop_console: true, // 🔥 removes console.log in prod
+              drop_console: true,
             },
           },
         }),
