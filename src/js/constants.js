@@ -1,3 +1,3 @@
-const SITE_TITLE = "Page Title";
+const SITE_TITLE = "Gordano Model Flying Club";
 
 module.exports = { SITE_TITLE };
