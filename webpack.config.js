@@ -14,13 +14,14 @@ module.exports = (env, argv) => {
   return {
     mode: isProd ? "production" : "development",
 
-    entry: "./src/js/main.js",
-
+    entry: {
+      main: "./src/js/main.js", // for index.html
+      aboutus: "./src/js/aboutus.js", // for about.html
+    },
     output: {
-      filename: "main.js",
+      filename: "[name].bundle.js", // main.bundle.js, about.bundle.js
       path: path.resolve(__dirname, "dist"),
       clean: true,
-      publicPath: "/",
     },
 
     devServer: {
@@ -30,26 +31,27 @@ module.exports = (env, argv) => {
     },
 
     plugins: [
-      /*new HtmlWebpackPlugin({
-        template: "./src/index.html",
-        title: SITE_TITLE,
-      }),*/
       new CopyWebpackPlugin({
         patterns: [
           { from: "src/images", to: "images" },
           { from: "src/favicon.ico", to: "." },
+          { from: "src/site.webmanifest", to: "." },
         ],
       }),
       new HtmlWebpackPlugin({
         filename: "index.html",
         template: "./src/template.html",
-        title:  SITE_TITLE,
-      }),   
+        chunks: ["main"], // only include main.js
+        site_title: SITE_TITLE,
+        title: SITE_TITLE,
+      }),
       new HtmlWebpackPlugin({
-        filename: "about.html",
+        filename: "aboutus.html",
         template: "./src/template.html",
-        title:  "About - " + SITE_TITLE,
-      }),    
+        chunks: ["aboutus"], // only include about.js
+        site_title: SITE_TITLE,
+        title: "About - " + SITE_TITLE,
+      }),
     ],
 
     optimization: {

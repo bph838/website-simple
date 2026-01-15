@@ -10,12 +10,41 @@
 import { Collapse } from "bootstrap";
 import { scrollToElement } from "../components/scrolling";
 
-export function setupMenuCommands() {
-  const navLinks = document.querySelectorAll(".navbar .nav-link");
-  if (navLinks.length == 0) return;
-  const navbarCollapseEl = document.querySelector(".navbar-collapse");
-  if (navbarCollapseEl.length == 0) return;
+export function setupMenuCommands(root, activeClass = "page-homee") {
+
+  console.info("setupMenuCommands");
+  const navbarCollapseEl = root.querySelector(".navbar-collapse");
+  if (!navbarCollapseEl) return;
   const navbarCollapse = new Collapse(navbarCollapseEl, { toggle: false });
+
+  //need to set acive menu item
+  const navLinks = root.querySelectorAll(".nav-link");
+  navLinks.forEach((link) => {  
+    const page = link.dataset.page;
+    if (page === activeClass) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }  
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*
 
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -30,13 +59,7 @@ export function setupMenuCommands() {
       link.classList.add("active");
 
       // Close menu FIRST
-      navbarCollapse.hide();
-
-      // Wait for collapse animation to finish
-      setTimeout(() => {
-        console.log("Menu Clicked");
-        scrollToElement(el);
-      }, 300); // Bootstrap collapse animation duration
+      navbarCollapse.hide();      
     });
-  });
+  });*/
 }
