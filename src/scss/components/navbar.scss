@@ -1,0 +1,28 @@
+.navbar {
+
+  @extend .navbar-expand-lg;
+  @extend .bg-body-tertiary;
+  @extend .fixed-top;
+  
+  --bs-bg-opacity: 0.8;
+  .nav-link {
+    i {
+      display: none;
+      @include respond(pc, tablet) {
+        display: block;
+      }
+      text-align: center;
+      font-size: 2rem !important;
+    }
+  }
+}
+
+.collapsed-text {
+  display: none;
+  @media (max-width: 991px) {
+    // match your navbar collapse breakpoint
+    display: inline; // show on mobile / collapsed
+    font-size: 0.9rem;
+    color: #555;
+  }
+}
