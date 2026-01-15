@@ -79,7 +79,7 @@ function renderSectionWrappedTextLeft(pageSection, data) {
   pageSection.appendChild(sectionTextDiv);
 
   data.text.forEach((text) => {
-    renderSectionText(pageSection, text);
+    renderSectionText(sectionTextDiv, text);
   });
 }
 
@@ -106,7 +106,7 @@ function renderSectionLeftImage(pageSection, data) {
   pageSection.appendChild(sectionTextDiv);
 
   data.text.forEach((text) => {
-    renderSectionText(pageSection, text);
+    renderSectionText(sectionTextDiv, text);
   });
 }
 
@@ -126,7 +126,7 @@ function renderSectionRightImage(pageSection, data) {
   pageSection.appendChild(sectionTextDiv);
 
   data.text.forEach((text) => {
-    renderSectionText(pageSection, text);
+    renderSectionText(sectionTextDiv, text);
   });
 
   const sectionImageDiv = document.createElement("div");
@@ -154,7 +154,7 @@ function renderSectionNoImage(pageSection, data) {
   pageSection.appendChild(sectionTextDiv);
 
   data.text.forEach((text) => {
-    renderSectionText(pageSection, text);
+    renderSectionText(sectionTextDiv, text);
   });
 
 }

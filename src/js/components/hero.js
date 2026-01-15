@@ -1,24 +1,29 @@
 
 export function renderHero(data) {
     console.log("renderHero");
-  const heroSection = document.createElement("section");
-  heroSection.className = "hero";
+
+
+  const hero = document.getElementById("hero");
+  if (!hero) {
+    console.error("There is no hero id to render to");
+    return;
+  } 
+
+    hero.className = "hero";
   if (data.image) {
-    heroSection.style.backgroundImage = "url('"+data.image+"')";
-    heroSection.style.backgroundPosition = "center";
-    heroSection.style.backgroundSize = "cover";
-    heroSection.style.backgroundRepeat = "no-repeat";
+    hero.style.backgroundImage = "url('"+data.image+"')";
+    hero.style.backgroundPosition = "center";
+    hero.style.backgroundSize = "cover";
+    hero.style.backgroundRepeat = "no-repeat";
   }
 
-  if (data.text) {
+   if (data.text) {
     const heroTextDiv = document.createElement("div");
-    heroTextDiv.className = "container text-center";
-    heroSection.appendChild(heroTextDiv);
+    heroTextDiv.className = "container-hero container text-center";
+    hero.appendChild(heroTextDiv);
 
     const heroTextH1 = document.createElement("H1");
     heroTextH1.innerHTML = data.text;    
     heroTextDiv.appendChild(heroTextH1);
   }
-
-  app.appendChild(heroSection); 
 }

@@ -26,11 +26,21 @@
     />-->
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary fixed-top navbar-opacity"
+    >
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"
-          ><%= htmlWebpackPlugin.options.site_title %></a
-        >
+        <a class="navbar-brand d-flex align-items-center" href="/">
+          <img
+            src="/images/logo.png"
+            alt="Site logo"
+            width="32"
+            height="32"
+            class="me-2"
+          />
+          <span><%= siteName %></span>
+        </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -139,8 +149,12 @@
         </div>
       </div>
     </nav>
-
-    <div id="app"></div>
-    <div id="footer"></div>
+    <div class="container-fluid" id="page-content">
+      <div id="hero"></div>
+      <div id="contentarea"></div>
+    </div>
+    <div id="footer">
+      <p>GMFC <span id="copyright-year"></span></p>
+    </div>
   </body>
 </html>

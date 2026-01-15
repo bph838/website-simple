@@ -15,7 +15,7 @@ module.exports = (env, argv) => {
     mode: isProd ? "production" : "development",
 
     entry: {
-      main: "./src/js/main.js", // for index.html
+      index: "./src/js/index.js", // for index.html
       aboutus: "./src/js/aboutus.js", // for about.html
     },
     output: {
@@ -38,19 +38,25 @@ module.exports = (env, argv) => {
           { from: "src/site.webmanifest", to: "." },
         ],
       }),
+
+      
       new HtmlWebpackPlugin({
         filename: "index.html",
-        template: "./src/template.html",
-        chunks: ["main"], // only include main.js
-        site_title: SITE_TITLE,
+        template: "./src/template.ejs",
+        chunks: ["index"], // only include index.js
         title: SITE_TITLE,
+        templateParameters: {
+          siteName: SITE_TITLE,
+        },
       }),
       new HtmlWebpackPlugin({
         filename: "aboutus.html",
-        template: "./src/template.html",
+        template: "./src/template.ejs",
         chunks: ["aboutus"], // only include about.js
-        site_title: SITE_TITLE,
-        title: "About - " + SITE_TITLE,
+        title: "About - " + SITE_TITLE,        
+        templateParameters: {
+          siteName: SITE_TITLE,
+        },
       }),
     ],
 

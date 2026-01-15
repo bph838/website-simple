@@ -2,8 +2,8 @@
   "title": "Simple Website",
   "content": {
     "hero": {
-      "image": "images/hero.png",
-      "text": "Simple Website hero"
+      "image": "images/hero/hero-01.jpg",
+      "text": "Gordano Model Flying Club"
     },
     "sections": [
       {

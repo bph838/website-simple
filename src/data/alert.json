@@ -1,0 +1,10 @@
+{
+  "alerts": [
+    {
+      "title": "Important Update",
+      "message": "Our terms of service have changed. Please review the updated terms on our website.",
+      "fromDate": "2025-01-01",
+      "toDate": "2025-01-31"
+    }
+  ]
+}

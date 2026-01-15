@@ -3,19 +3,37 @@
   @extend .align-items-center;
   @extend .text-white;
 
-  padding-top: 90px;
-  min-height: 80vh;  
+  @include respond(phone) {
+    padding-top: 30px;
+    min-height: 40vh;
+  }
 
-  .container {
-    background-color: darkgrey;
-    opacity: 0.8;
+  @include respond(tablet) {
+    padding-top: 50px;
+    min-height: 60vh;
+  }
+
+  @include respond(pc) {
+    padding-top: 70px;
+    min-height: 80vh;
+  }
+
+ .container-hero {
+    // background-color: darkgrey;
+    //opacity: 0.8;
+
     h1 {
       @extend .display-4;
       @extend .fw-bold;
+      color: white;
+      font-size: 24px;
+       @include respond(tablet){font-size: 48px;}
+       @include respond(pc){font-size: 64px;}
+      
 
-      color: black;
-      font-size: 64px;
-      text-shadow: -2px 2px 3px white;
+  text-shadow:
+    0 0 2px rgba(0,0,0,0.8);
+
     }
   }
 }

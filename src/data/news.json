@@ -1,0 +1,15 @@
+{  
+    "news":[
+        {
+            "date":"2025-01-01",
+            "title":"New Feature Released",
+            "content":"We are excited to announce the release of our new feature that will enhance user experience significantly."
+            
+        },
+        {
+            "date":"2025-01-01",
+            "title":"Scheduled Maintenance",
+            "content":"Please be informed that there will be a scheduled maintenance on May 15th from 1 AM to 3 AM UTC. During this time, some services may be temporarily unavailable."
+        }
+    ]
+}

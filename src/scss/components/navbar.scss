@@ -2,9 +2,8 @@
 
   @extend .navbar-expand-lg;
   @extend .bg-body-tertiary;
-  @extend .fixed-top;
-  
-  --bs-bg-opacity: 0.8;
+  @extend .fixed-top; 
+ 
   .nav-link {
     i {
       display: none;
@@ -26,3 +25,8 @@
     color: #555;
   }
 }
+
+.navbar-opacity {
+  --bs-bg-opacity: 0.8!important;
+}
+
