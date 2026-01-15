@@ -26,4 +26,9 @@ export function renderHero(data) {
     heroTextH1.innerHTML = data.text;    
     heroTextDiv.appendChild(heroTextH1);
   }
+
+  //setup for alerts
+  const heroAlertDiv = document.createElement("div");
+  heroAlertDiv.id = "alerts-container";
+  hero.appendChild(heroAlertDiv);
 }

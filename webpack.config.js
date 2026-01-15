@@ -33,6 +33,7 @@ module.exports = (env, argv) => {
     plugins: [
       new CopyWebpackPlugin({
         patterns: [
+          { from: "src/data", to: "data" },
           { from: "src/images", to: "images" },
           { from: "src/favicon.ico", to: "." },
           { from: "src/site.webmanifest", to: "." },
