@@ -1,32 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="/images/favicon/favicon-96x96.png"
-      sizes="96x96"
-    />
-    <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/images/favicon/apple-touch-icon.png"
-    />
-    <link rel="manifest" href="/site.webmanifest" />
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <!--<link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />-->
-  </head>
-  <body>
-    <nav
+<nav
       class="navbar navbar-expand-lg bg-body-tertiary fixed-top navbar-opacity"
     >
       <div class="container-fluid">
@@ -38,7 +10,7 @@
             height="32"
             class="me-2"
           />
-          <span><%= siteName %></span>
+          <span class="navbar-brand-site-name"></span>
         </a>
 
         <button
@@ -149,12 +121,3 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid" id="page-content">
-      <div id="hero"></div>
-      <div id="contentarea"></div>
-    </div>
-    <div id="footer">
-      <p>GMFC <span id="copyright-year"></span></p>
-    </div>
-  </body>
-</html>
