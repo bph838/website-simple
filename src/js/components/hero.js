@@ -11,7 +11,7 @@ export function renderHero(data) {
 
     hero.className = "hero";
   if (data.image) {
-    hero.style.backgroundImage = "url('"+data.image+"')";
+    hero.style.backgroundImage = "url('/"+data.image+"')";
     hero.style.backgroundPosition = "center";
     hero.style.backgroundSize = "cover";
     hero.style.backgroundRepeat = "no-repeat";

@@ -12,6 +12,15 @@ const HtmlWebpackPartialsPlugin = require("html-webpack-partials-plugin");
 const { SITE_TITLE } = require("./src/js/constants.js");
 const { loadEnvFile } = require("process");
 
+const navigation = fs.readFileSync(
+  path.resolve(__dirname, "src/partials/navigation.html"),
+  "utf8"
+);
+const footer = fs.readFileSync(
+  path.resolve(__dirname, "src/partials/footer.html"),
+  "utf8"
+);
+
 module.exports = (env, argv) => {
   const isProd = argv.mode === "production";
 
@@ -21,7 +30,9 @@ module.exports = (env, argv) => {
     entry: {
       index: "./src/js/index.js", // for index.html
       events: "./src/js/events.js", // for events.html
+      gallery: "./src/js/gallery.js", // for gallery.html
       aboutus: "./src/js/aboutus.js", // for about.html
+      club: "./src/js/club.js", // for club stuff
     },
     output: {
       filename: "[name].bundle.js", // main.bundle.js, about.bundle.js
@@ -53,15 +64,8 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
-
-        navigation: fs.readFileSync(
-          path.resolve(__dirname, "src/partials/navigation.html"),
-          "utf8"
-        ),
-        footer: fs.readFileSync(
-          path.resolve(__dirname, "src/partials/footer.html"),
-          "utf8"
-        ),
+        navigation: navigation,
+        footer: footer,
       }),
       new HtmlWebpackPlugin({
         filename: "events.html",
@@ -71,15 +75,22 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
-        navigation: fs.readFileSync(
-          path.resolve(__dirname, "src/partials/navigation.html"),
-          "utf8"
-        ),
-        footer: fs.readFileSync(
-          path.resolve(__dirname, "src/partials/footer.html"),
-          "utf8"
-        ),
+        navigation: navigation,
+        footer: footer,
       }),
+
+      new HtmlWebpackPlugin({
+        filename: "gallery.html",
+        template: "./src/templates/main.html",
+        chunks: ["gallery"], // only include gallery.js
+        title: "Gallery - " + SITE_TITLE,
+        templateParameters: {
+          siteName: SITE_TITLE,
+        },
+        navigation: navigation,
+        footer: footer,
+      }),
+
       new HtmlWebpackPlugin({
         filename: "aboutus.html",
         template: "./src/templates/main.html",
@@ -88,36 +99,59 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
-        navigation: fs.readFileSync(
-          path.resolve(__dirname, "src/partials/navigation.html"),
-          "utf8"
-        ),
-        footer: fs.readFileSync(
-          path.resolve(__dirname, "src/partials/footer.html"),
-          "utf8"
-        ),
+        navigation: navigation,
+        footer: footer,
       }),
 
-      new HtmlWebpackPartialsPlugin({
-        path: path.join(__dirname, "./src/partials/navigation.html"),
-        location: "body",
-        template_filename: "*.html",
-      }),
-
-      /*new HtmlWebpackPartialsPlugin({
-        path: path.join(__dirname, "./src/partials"),
-        location: "body",
-        priority: "replace",
-        template_filename: "*.html",
-        options: {
-          navigation: {
-            template: "navigation.html",
-          },
-          footer: {
-            template: "footer.html",
-          },
+      new HtmlWebpackPlugin({
+        filename: "club/clubnews.html",
+        template: "./src/templates/main.html",
+        chunks: ["club"], // only include club.js
+        title: "Club News - " + SITE_TITLE,
+        templateParameters: {
+          siteName: SITE_TITLE,
         },
-      }),*/
+        navigation: navigation,
+        footer: footer,
+      }),
+      new HtmlWebpackPlugin({
+        filename: "club/clubrules.html",
+        template: "./src/templates/main.html",
+        chunks: ["club"], // only include club.js
+        title: "Club Rules - " + SITE_TITLE,
+        templateParameters: {
+          siteName: SITE_TITLE,
+        },
+        navigation: navigation,
+        footer: footer,
+      }),
+      new HtmlWebpackPlugin({
+        filename: "club/caa.html",
+        template: "./src/templates/main.html",
+        chunks: ["club"], // only include club.js
+        title: "CAA - " + SITE_TITLE,
+        templateParameters: {
+          siteName: SITE_TITLE,
+        },
+        navigation: navigation,
+        footer: footer,
+      }),
+      new HtmlWebpackPlugin({
+        filename: "club/clubmerch.html",
+        template: "./src/templates/main.html",
+        chunks: ["club"], // only include club.js
+        title: "Club Merch - " + SITE_TITLE,
+        templateParameters: {
+          siteName: SITE_TITLE,
+        },
+        navigation: navigation,
+        footer: footer,
+      }),
+
+
+
+
+
     ],
 
     optimization: {

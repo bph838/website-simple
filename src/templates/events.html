@@ -18,13 +18,24 @@
     />
     <link rel="manifest" href="/site.webmanifest" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var calendarEl = document.getElementById("calendar");
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: "dayGridMonth",
+          events: './data/events.json' // your JSON file path
+        });
+        calendar.render();
+      });
+    </script>
   </head>
   <body>
     <%= htmlWebpackPlugin.options.navigation %>
     <main>
       <div id="hero"></div>
-      <div id="calendar"></div>      
-    </main>    
+      <div id="calendar"></div>
+    </main>
     <%= htmlWebpackPlugin.options.footer %>
   </body>
 </html>
