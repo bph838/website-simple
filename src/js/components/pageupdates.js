@@ -4,3 +4,10 @@ export function initCopyrightYear() {
 
   el.textContent = new Date().getFullYear();
 }
+
+export function initMenuName(name) {
+  const el = document.getElementById("navbar-brand-site-name");
+  if (!el) return;
+
+  el.textContent = name;
+}
