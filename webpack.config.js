@@ -65,7 +65,7 @@ module.exports = (env, argv) => {
       }),
       new HtmlWebpackPlugin({
         filename: "events.html",
-        template: "./src/templates/main.html",
+        template: "./src/templates/events.html",
         chunks: ["events"], // only include events.js
         title: "Events - " + SITE_TITLE,
         templateParameters: {

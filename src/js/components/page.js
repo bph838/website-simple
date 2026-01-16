@@ -2,6 +2,11 @@ import { renderHero } from "./hero";
 import { renderSection } from "./section";
 
 export function renderPage(data) {
+
+
+  //If there is a hero image render it
+  if (data.content.hero) renderHero(data.content.hero);
+
   //find app Id to render to.
   const contentarea = document.getElementById("contentarea");
   if (!contentarea) {
@@ -11,10 +16,7 @@ export function renderPage(data) {
   if (!data.content) {
     console.error("There is data content to render from");
     return;
-  }
-
-  //If there is a hero image render it
-  if (data.content.hero) renderHero(data.content.hero);
+  }  
 
   //render each section
   if (data.content.sections) {
