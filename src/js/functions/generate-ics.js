@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+const siteName = require('../../constants').SITE_TITLE;
+const siteDomain = require('../../constants').SITE_DOMAIN;
 
 module.exports = function generateICS() {
   const eventsPath = path.resolve(__dirname, '../../data/events.json');
@@ -7,7 +9,7 @@ module.exports = function generateICS() {
 
   let ics = `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//YourSite//Events//EN
+PRODID:-//${siteName}//Events//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 `;
@@ -21,7 +23,7 @@ METHOD:PUBLISH
 
     ics += `
 BEGIN:VEVENT
-UID:event-${index}@yourdomain.com
+UID:event-${index}@${siteDomain}
 DTSTAMP:${start}
 DTSTART:${start}${end}
 SUMMARY:${event.title}

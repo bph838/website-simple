@@ -149,7 +149,7 @@ module.exports = (env, argv) => {
         footer: footer,
       }),
 
-      /////
+      /////Create the ICS file for events
       {
         apply: (compiler) => {
           compiler.hooks.thisCompilation.tap(
@@ -174,7 +174,6 @@ module.exports = (env, argv) => {
           );
         },
       },
-
       ///////
     ],
 
