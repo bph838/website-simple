@@ -11,6 +11,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPartialsPlugin = require("html-webpack-partials-plugin");
 const { SITE_TITLE } = require("./src/js/constants.js");
 const { loadEnvFile } = require("process");
+const generateICS = require("./src/js/functions/generate-ics.js");
 
 const navigation = fs.readFileSync(
   path.resolve(__dirname, "src/partials/navigation.html"),
@@ -148,10 +149,33 @@ module.exports = (env, argv) => {
         footer: footer,
       }),
 
+      /////
+      {
+        apply: (compiler) => {
+          compiler.hooks.thisCompilation.tap(
+            "GenerateICSPlugin",
+            (compilation) => {
+              compilation.hooks.processAssets.tap(
+                {
+                  name: "GenerateICSPlugin",
+                  stage:
+                    compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONS,
+                },
+                () => {
+                  const icsContent = generateICS();
 
+                  compilation.emitAsset(
+                    "events.ics",
+                    new compiler.webpack.sources.RawSource(icsContent)
+                  );
+                }
+              );
+            }
+          );
+        },
+      },
 
-
-
+      ///////
     ],
 
     optimization: {
