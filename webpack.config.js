@@ -34,8 +34,7 @@ module.exports = (env, argv) => {
       gallery: "./src/js/gallery.js", // for gallery.html
       aboutus: "./src/js/aboutus.js", // for about.html
       clubnews: "./src/js/club/clubnews.js",
-      clubrules: "./src/js/club/clubrules.js",
-      caa: "./src/js/club/caa.js",
+      clubrules: "./src/js/club/clubrules.js",      
       clubmerch: "./src/js/club/clubmerch.js",
     },
     output: {
@@ -128,18 +127,7 @@ module.exports = (env, argv) => {
         },
         navigation: navigation,
         footer: footer,
-      }),
-      new HtmlWebpackPlugin({
-        filename: "club/caa.html",
-        template: "./src/templates/main.html",
-        chunks: ["caa"], 
-        title: "CAA - " + SITE_TITLE,
-        templateParameters: {
-          siteName: SITE_TITLE,
-        },
-        navigation: navigation,
-        footer: footer,
-      }),
+      }),      
       new HtmlWebpackPlugin({
         filename: "club/clubmerch.html",
         template: "./src/templates/main.html",
