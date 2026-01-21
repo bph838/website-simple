@@ -30,7 +30,7 @@ module.exports = (env, argv) => {
 
     entry: {
       index: "./src/js/index.js", // for index.html
-      events: "./src/js/events.js", // for events.html
+      calendar: "./src/js/calendar.js", // for calendar.html
       gallery: "./src/js/gallery.js", // for gallery.html
       aboutus: "./src/js/aboutus.js", // for about.html
       club: "./src/js/club.js", // for club stuff
@@ -69,10 +69,10 @@ module.exports = (env, argv) => {
         footer: footer,
       }),
       new HtmlWebpackPlugin({
-        filename: "events.html",
-        template: "./src/templates/events.html",
-        chunks: ["events"], // only include events.js
-        title: "Events - " + SITE_TITLE,
+        filename: "calendar.html",
+        template: "./src/templates/calendar.html",
+        chunks: ["calendar"], // only include calendar.js
+        title: "Calendar - " + SITE_TITLE,
         templateParameters: {
           siteName: SITE_TITLE,
         },
@@ -165,7 +165,7 @@ module.exports = (env, argv) => {
                   const icsContent = generateICS();
 
                   compilation.emitAsset(
-                    "events.ics",
+                    "calendar.ics",
                     new compiler.webpack.sources.RawSource(icsContent)
                   );
                 }

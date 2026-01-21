@@ -5,12 +5,12 @@ import "../scss/styles.scss";
 //import $ from "jquery";
 import { setupMenuCommands } from "./menu/menu";
 import { initCopyrightYear, initMenuName } from "./components/pageupdates";
-import { renderEvents } from "./pages/events";    
+import { renderEvents } from "./pages/calendar";    
 
 
-import data from '../data/pages/events.json';  
+import data from '../data/pages/calendar.json';  
 console.log(data);
-setupMenuCommands(document, "page-events");
+setupMenuCommands(document, "page-calendar");
 renderEvents(data);
 initCopyrightYear();
 initMenuName(SITE_TITLE);
