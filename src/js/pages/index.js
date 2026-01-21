@@ -1,11 +1,8 @@
-import { renderHero } from "./hero";
-import { renderSection } from "./section";
+import { renderHero } from "../components/hero";
+import { renderSection } from "../components/section";
 
-export function renderPage(data) {
-  //If there is a hero image render it
-  if (data.content.hero) renderHero(data.content.hero);
 
-  //find app Id to render to.
+export function renderIndex(data) {
   const contentarea = document.getElementById("contentarea");
   if (!contentarea) {
     console.error("There is no contentarea id to render to");
@@ -15,8 +12,12 @@ export function renderPage(data) {
     console.error("There is data content to render from");
     return;
   }
+  
+  //If there is a hero image render it
+  if (data.content.hero) 
+    renderHero(data.content.hero);
 
-  //render each section
+    //render each section
   if (data.content.sections) {
     const sectionsDiv = document.createElement("div");
     sectionsDiv.className = "sections";

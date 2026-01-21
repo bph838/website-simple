@@ -8,7 +8,7 @@ import 'bootstrap';
 //import $ from "jquery";
 import { setupMenuCommands } from "./menu/menu";
 import { initCopyrightYear, initMenuName } from "./components/pageupdates";
-import { renderGallery } from "./components/gallery";
+import { renderGallery } from "./pages/gallery";
 
 import data from '../data/pages/gallery.json';  
 console.log(data);

@@ -1,5 +1,5 @@
 import { fetchJson } from "../functions/loadData";
-import { renderHero } from "./hero";
+import { renderHero } from "../components/hero";
 
 export function renderGallery(data) {
   console.log("Rendering Gallery");
