@@ -25,6 +25,7 @@
         var calendarEl = document.getElementById("calendar");
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: "dayGridMonth",
+          firstDay: 1, // start week on Monday
           events: "./data/events.json", // your JSON file path
         });
         calendar.render();
