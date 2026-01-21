@@ -8,14 +8,11 @@ import 'bootstrap';
 //import $ from "jquery";
 import { setupMenuCommands } from "./menu/menu";
 import { initCopyrightYear, initMenuName } from "./components/pageupdates";
-import { renderHomepage } from "./components/page";
-import { renderAlerts } from "./components/alerts";
+import { renderGallery } from "./components/gallery";
 
-
-import data from '../data/pages/homepage.json';  
+import data from '../data/pages/gallery.json';  
 console.log(data);
 setupMenuCommands(document,"page-gallery");
-renderHomepage(data);  
-renderAlerts();  
+renderGallery(data);  
 initCopyrightYear();
 initMenuName(SITE_TITLE);

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const siteName = require('../../constants').SITE_TITLE;
-const siteDomain = require('../../constants').SITE_DOMAIN;
+const siteName = require('../constants').SITE_TITLE;
+const siteDomain = require('../constants').SITE_DOMAIN;
 
 module.exports = function generateICS() {
   const eventsPath = path.resolve(__dirname, '../../data/events.json');

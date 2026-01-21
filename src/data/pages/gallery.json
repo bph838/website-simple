@@ -1,0 +1,9 @@
+{  
+  "content": {
+    "hero": {
+      "image": "images/hero/hero-01.jpg",
+      "text": "Gallery"
+    },
+    "sections": [{}]
+  }
+}
