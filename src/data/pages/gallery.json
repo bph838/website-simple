@@ -3,7 +3,8 @@
     "hero": {
       "image": "images/hero/hero-01.jpg",
       "text": "Gallery"
-    },
+    },    
     "sections": [{}]
-  }
+  },
+  "externalPath":"https://gmfc-images.s3.eu-north-1.amazonaws.com/"
 }

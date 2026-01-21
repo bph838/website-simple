@@ -9,7 +9,6 @@ export function renderGallery(data) {
   //need to load the gallery json from site
   const siteGalleryPath = "/data/gallery.json";
 
-  /*
   const contentarea = document.getElementById("contentarea");
   if (!contentarea) {
     console.error("There is no contentarea id to render to");
@@ -19,20 +18,43 @@ export function renderGallery(data) {
     console.error("There is data content to render from");
     return;
   }
+
+  fetchJson(siteGalleryPath).then((galleryData) => {
+    console.log("Gallery Data Loaded", galleryData);
+    const externalPath = data.externalPath || "";
+    //need to sort the images by date order
+    galleryData.sort(
+      (a, b) =>
+        new Date(b.date.replace(" ", "T")) - new Date(a.date.replace(" ", "T")),
+    );
+
+    //create a div to hold the gallery
+    const galleryDiv = document.createElement("div");
+    galleryDiv.className = "gallery";
+    contentarea.appendChild(galleryDiv);
+
+    if (galleryData && Array.isArray(galleryData)) {
+      galleryData.forEach((image) => {
+        renderGalleryImage(image, galleryDiv, externalPath);
+      });
+    }
+  });
+}
+
+function renderGalleryImage(image, galleryDiv, externalPath) {
+  let imgPath = `${externalPath}/${image.name}`;
+  let imgThumbNamePath = `${externalPath}thumbnails/${image.name}`;
+  let dateObj = new Date(image.date.replace(" ", "T"));
+  let year = dateObj.getFullYear();
+
   
-  //If there is a hero image render it
-  if (data.content.hero) 
-    renderHero(data.content.hero);
 
-    //render each section
-  if (data.content.sections) {
-    const sectionsDiv = document.createElement("div");
-    sectionsDiv.className = "sections";
-    contentarea.appendChild(sectionsDiv);
+  const imagediv = document.createElement("div");
+  imagediv.className = "gallery-image";
+  galleryDiv.appendChild(imagediv);
 
-    data.content.sections.forEach((section) => {
-      renderSection(sectionsDiv, section);
-    });
-  }
-    */
+  const img = document.createElement("img");
+  img.src = imgThumbNamePath;
+  img.alt = image.name;
+  imagediv.appendChild(img);
 }
