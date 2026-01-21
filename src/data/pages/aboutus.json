@@ -1,0 +1,23 @@
+{
+  "content": {
+    "hero": {
+      "image": "images/hero/hero-01.jpg",
+      "text": "About Us"
+    },
+    "sections": [{}],
+    "findus": {
+      "title": "Find Us",
+      "type": "wrappedTextLeft",
+      "image": "images/map-gmfc-location.png",
+      "text": [
+        "The  Gordano Model Flying Club site is located between <strong>Portishead</strong> and <strong>Clevedon</strong>.",
+        "Please use the Google Map location below for directions.",
+        "What 3 Words – ///magnets.downcast.flirts"
+      ],
+      "mapCoordinates": {
+        "latitude": 51.459563,
+        "longitude": -2.790968
+      }
+    }
+  }
+}

@@ -29,6 +29,9 @@
     border-bottom: 1px solid #ccc; // color & thickness
     margin: 20px 0; // spacing above & below
   }
+   &:last-child::after {
+    content: none; // remove the separator for the last section
+  }
 }
 
 .sectionContent {
