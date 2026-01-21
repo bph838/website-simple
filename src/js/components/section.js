@@ -30,7 +30,7 @@ export function renderSection(sectionsDiv, data) {
   }
 
   const titleSectionInfoDiv = document.createElement("div");
-  titleSectionInfoDiv.className = "sectionInfoHolder "+ classname;
+  titleSectionInfoDiv.className = "sectionInfoHolder " + classname;
   pageSection.appendChild(titleSectionInfoDiv);
 
   switch (data.type) {
@@ -82,6 +82,9 @@ function renderSectionWrappedTextLeft(pageSection, data) {
   data.text.forEach((text) => {
     renderSectionText(sectionTextDiv, text);
   });
+
+  //If there are any pdf links to render
+  renderPDFLinks(pageSection, data);
 }
 
 function renderSectionLeftImage(pageSection, data) {
@@ -120,7 +123,6 @@ function renderSectionRightImage(pageSection, data) {
   pageSection.style.display = "flex";
   // Optionally, you can add other flex properties
   pageSection.style.flexDirection = "row"; // or "column"
- 
 
   const sectionTextDiv = document.createElement("div");
   sectionTextDiv.className = "sectionTextDiv";
@@ -137,7 +139,6 @@ function renderSectionRightImage(pageSection, data) {
   const sectionImage = document.createElement("img");
   sectionImage.src = data.image;
   sectionImageDiv.appendChild(sectionImage);
-
 }
 
 function renderSectionNoImage(pageSection, data) {
@@ -146,9 +147,8 @@ function renderSectionNoImage(pageSection, data) {
     return;
   }
 
-  pageSection.style.display = "flex";  
+  pageSection.style.display = "flex";
   pageSection.style.flexDirection = "row"; // or "column"
- 
 
   const sectionTextDiv = document.createElement("div");
   sectionTextDiv.className = "sectionTextDiv";
@@ -157,11 +157,40 @@ function renderSectionNoImage(pageSection, data) {
   data.text.forEach((text) => {
     renderSectionText(sectionTextDiv, text);
   });
-
 }
 
 function renderSectionText(pageSection, text) {
   const sectionParatext = document.createElement("p");
   sectionParatext.innerHTML = text;
   pageSection.appendChild(sectionParatext);
+}
+
+function renderPDFLinks(pageSection, data) {
+  console.log("Checking for PDF links to render");
+  if (data.pdfs && data.pdfs.length > 0) {
+    const pdfsDiv = document.createElement("div");
+    pdfsDiv.className = "pdfLinks";
+    pageSection.appendChild(pdfsDiv);
+
+    data.pdfs.forEach((pdf) => {
+      const pdfDiv = document.createElement("div");
+      pdfDiv.className = "pdfdoc";
+      pdfsDiv.appendChild(pdfDiv);
+
+      const pdfLink = document.createElement("a");
+      pdfLink.href = pdf.url;
+      pdfLink.target = "_blank";
+      pdfDiv.appendChild(pdfLink);
+
+      const imgPDF = document.createElement("img");
+      imgPDF.src = "/images/pdf.png";
+      imgPDF.class = "pdfimage";
+      pdfLink.appendChild(imgPDF);
+
+      const spanPDF = document.createElement("span");
+      spanPDF.innerHTML = pdf.text;
+      spanPDF.class = "pdfimagedesc";
+      pdfLink.appendChild(spanPDF);
+    });
+  }
 }

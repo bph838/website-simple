@@ -33,7 +33,10 @@ module.exports = (env, argv) => {
       calendar: "./src/js/calendar.js", // for calendar.html
       gallery: "./src/js/gallery.js", // for gallery.html
       aboutus: "./src/js/aboutus.js", // for about.html
-      clubnews: "./src/js/club/clubnews.js", // for club stuff
+      clubnews: "./src/js/club/clubnews.js",
+      clubrules: "./src/js/club/clubrules.js",
+      caa: "./src/js/club/caa.js",
+      clubmerch: "./src/js/club/clubmerch.js",
     },
     output: {
       filename: "[name].bundle.js", // main.bundle.js, about.bundle.js
@@ -50,7 +53,7 @@ module.exports = (env, argv) => {
     plugins: [
       new CopyWebpackPlugin({
         patterns: [
-          { from: "src/data", to: "data" },
+          { from: "src/data", to: "data" },          
           { from: "src/images", to: "images" },
           { from: "src/favicon.ico", to: "." },
           { from: "src/site.webmanifest", to: "." },
@@ -107,7 +110,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         filename: "club/clubnews.html",
         template: "./src/templates/main.html",
-        chunks: ["clubnews"], // only include club.js
+        chunks: ["clubnews"], 
         title: "Club News - " + SITE_TITLE,
         templateParameters: {
           siteName: SITE_TITLE,
@@ -118,7 +121,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         filename: "club/clubrules.html",
         template: "./src/templates/main.html",
-        chunks: ["clubrules"], // only include club.js
+        chunks: ["clubrules"], 
         title: "Club Rules - " + SITE_TITLE,
         templateParameters: {
           siteName: SITE_TITLE,
@@ -129,7 +132,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         filename: "club/caa.html",
         template: "./src/templates/main.html",
-        chunks: ["caa"], // only include club.js
+        chunks: ["caa"], 
         title: "CAA - " + SITE_TITLE,
         templateParameters: {
           siteName: SITE_TITLE,
