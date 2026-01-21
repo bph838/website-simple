@@ -1,0 +1,41 @@
+footer {
+  //@extend .footer;
+  @extend .bg-dark;
+  @extend .text-light;
+  @extend .py-4;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#footer-logo {
+  display: none;
+
+  @include respond(pc, tablet) {
+    display: flex;
+    flex: 0 0 120px; /* exactly 33% each */
+    max-width: 120px;
+
+    padding: 1rem;
+    img {
+      max-width: 64px;
+      max-height: 64px;
+    }
+  }
+}
+
+#footer-content {
+  flex: 1;
+  padding: 1rem;
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+  }
+  text-align: center;
+}
+
+#footer-links {
+  flex: 0 0 10%;
+  justify-content: flex-end;
+  max-width: 10%;
+  padding: 1rem;
+}
