@@ -79,7 +79,9 @@ export function renderSection(sectionsDiv, data) {
     case "noImage":
       renderSectionNoImage(titleSectionInfoDiv, data);
       break;
-  }
+  }  
+
+  return titleSectionInfoDiv;
 }
 
 function renderSectionHolder(sectionsDiv) {
