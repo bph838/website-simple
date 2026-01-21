@@ -19,12 +19,12 @@ export function renderAlerts() {
       let now = new Date();
       let dateFrom = alert.date_from ? new Date(alert.date_from) : null;
       let dateTo = alert.date_to ? new Date(alert.date_to) : null;
- 
+
       //check date range
       if ((dateFrom && now < dateFrom) || (dateTo && now > dateTo)) {
         console.log(`Skipping alert "${alert.title}" due to date range`);
         return; //skip this alert
-      } else{
+      } else {
         const alertDiv = document.createElement("div");
         alertDiv.className = `alert alert-${alert.type} show`;
         alertDiv.setAttribute("role", "alert");
@@ -32,7 +32,17 @@ export function renderAlerts() {
           <strong>${alert.title}</strong> ${alert.message}          
         `;
         alertsContainer.appendChild(alertDiv);
+        shakeContainer(alertsContainer);
+        return;
       }
     });
   });
+}
+
+function shakeContainer(container) {
+  container.classList.add("highlight");
+
+  setTimeout(() => {
+    container.classList.remove("highlight");
+  }, 500);    
 }
