@@ -1,5 +1,9 @@
 import { fetchJson } from "../functions/loadData";
 import { renderHero } from "../components/hero";
+import PhotoSwipeLightbox from "photoswipe/lightbox";
+import "photoswipe/style.css";
+
+let yearSections = [];
 
 export function renderGallery(data) {
   console.log("Rendering Gallery");
@@ -38,35 +42,49 @@ export function renderGallery(data) {
         renderGalleryImage(image, galleryDiv, externalPath);
       });
     }
+
+    yearSections.forEach((yearDivId) => {
+      //Initialize PhotoSwipe Lightbox
+      let lightbox = new PhotoSwipeLightbox({
+        gallery: `#${yearDivId}`,
+        children: "a",
+        pswpModule: () => import("photoswipe"),
+      });
+      lightbox.init();
+    });
   });
 }
 
 function renderGalleryImage(image, galleryDiv, externalPath) {
   let imgPath = `${externalPath}/${image.name}`;
-  let imgThumbNamePath = `${externalPath}thumbnails/${image.name}`;
+  let imgThumbNamePath = `${externalPath}/thumbnails/${image.name}`;
   let dateObj = new Date(image.date.replace(" ", "T"));
   let year = dateObj.getFullYear();
 
   let yearDiv = document.getElementById(`galleryyear-${year}`);
-  if(!yearDiv){
+  if (!yearDiv) {
     yearDiv = document.createElement("div");
     yearDiv.id = `galleryyear-${year}`;
     yearDiv.className = "gallery-year-section";
     galleryDiv.appendChild(yearDiv);
-    const yearHeader = document.createElement("h2");  
-    yearHeader.textContent = year;  
+    const yearHeader = document.createElement("h2");
+    yearHeader.textContent = year;
     yearHeader.className = "gallery-year-header";
-    yearDiv.appendChild(yearHeader);    
+    yearDiv.appendChild(yearHeader);
+    yearSections.push(yearDiv.id);
   }
 
-
-
-  const imagediv = document.createElement("div");
-  imagediv.className = "gallery-image";
-  yearDiv.appendChild(imagediv);
+  const alink = document.createElement("a");
+  alink.href = imgPath;
+  alink.setAttribute("data-pswp-width", image.width);
+  alink.setAttribute("data-pswp-height", image.height);
+  alink.target = "_blank";
+  yearDiv.appendChild(alink);
 
   const img = document.createElement("img");
   img.src = imgThumbNamePath;
   img.alt = image.name;
-  imagediv.appendChild(img);
+  alink.appendChild(img); 
 }
+
+
