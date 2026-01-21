@@ -1,3 +1,5 @@
+import { makeSafeId } from "../functions/links";
+
 export function renderSection(sectionsDiv, data) {
   if (!data) {
     console.error("There is no data to render");
@@ -27,6 +29,37 @@ export function renderSection(sectionsDiv, data) {
     const titleText = document.createElement("h2");
     titleText.innerHTML = data.title;
     titleSectionDiv.appendChild(titleText);
+
+    if (data.date) {
+      const date = new Date(data.date);
+      const text = new Intl.DateTimeFormat("en-GB", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }).format(date);
+
+      const titleTextBar = document.createElement("div");      
+      titleTextBar.className="sectionheader";
+      titleSectionDiv.appendChild(titleTextBar);
+
+      const titleDateText = document.createElement("span");
+      titleDateText.innerHTML = text;
+      titleDateText.className = "sectiondate";
+      titleTextBar.appendChild(titleDateText);
+
+      //create a link <i class="fa-solid fa-link"></i>
+      let linkId = makeSafeId(data.title + "-" + data.date);
+      let newsUrl = `/club/clubnews.html#${linkId}`;
+      titleSectionDiv.id = linkId;
+
+      const titleLink = document.createElement("a");
+      titleLink.innerHTML = "<i class='fa-solid fa-link'></i>";
+      titleLink.className = "sectionlink";
+      titleLink.href = newsUrl;
+      titleLink.target = "_blank";      
+      titleTextBar.appendChild(titleLink);
+    }
   }
 
   const titleSectionInfoDiv = document.createElement("div");

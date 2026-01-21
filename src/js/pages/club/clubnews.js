@@ -14,10 +14,14 @@ export function renderClubNews(data) {
     sectionsDiv.className = "sections";
     contentarea.appendChild(sectionsDiv);
 
+    const newsSections = data.content.sections;
+    newsSections.sort(
+      (a, b) =>
+        new Date(b.date.replace(" ", "T")) - new Date(a.date.replace(" ", "T")),
+    );
+
     data.content.sections.forEach((section) => {
       renderSection(sectionsDiv, section);
     });
   }
-
 }
-
