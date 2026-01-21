@@ -1,4 +1,28 @@
 .gallery-image{
     display: inline-block;
     margin: 10px;
+
+    img{
+        max-width: 200px;
+        height: auto;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+
+
+        &:hover{
+            transform: scale(1.05);
+            border-color: #888;
+        }
+    }
+}
+
+.gallery-year-header{
+    width:100%
+
+    h2{
+        text-align: center;
+        font-size: 24px;
+    }
 }

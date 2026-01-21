@@ -47,11 +47,23 @@ function renderGalleryImage(image, galleryDiv, externalPath) {
   let dateObj = new Date(image.date.replace(" ", "T"));
   let year = dateObj.getFullYear();
 
-  
+  let yearDiv = document.getElementById(`galleryyear-${year}`);
+  if(!yearDiv){
+    yearDiv = document.createElement("div");
+    yearDiv.id = `galleryyear-${year}`;
+    yearDiv.className = "gallery-year-section";
+    galleryDiv.appendChild(yearDiv);
+    const yearHeader = document.createElement("h2");  
+    yearHeader.textContent = year;  
+    yearHeader.className = "gallery-year-header";
+    yearDiv.appendChild(yearHeader);    
+  }
+
+
 
   const imagediv = document.createElement("div");
   imagediv.className = "gallery-image";
-  galleryDiv.appendChild(imagediv);
+  yearDiv.appendChild(imagediv);
 
   const img = document.createElement("img");
   img.src = imgThumbNamePath;
