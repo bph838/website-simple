@@ -1,7 +1,6 @@
 import { renderHero } from "../components/hero";
 import { renderSection } from "../components/section";
-import { initMap } from "../components/map";
-
+import { initMapFrame } from "../components/map";
 
 export function renderAboutUs(data) {
   console.log("Rendering About Us Page");
@@ -10,18 +9,27 @@ export function renderAboutUs(data) {
 
   const contentarea = document.getElementById("contentarea");
 
+  //Render other sections
+  if (data.content.sections && data.content.sections.length > 0) {
+    const sectionsDiv = document.createElement("div");
+    sectionsDiv.className = "sections";
+    contentarea.appendChild(sectionsDiv);
 
+    data.content.sections.forEach((section) => {
+      renderSection(sectionsDiv, section);
+    });
+  }
 
-  renderFindUsSection(data.content.findus,contentarea);
-
-
+  //Render Find Us section
+  renderFindUsSection(data.content.findus, contentarea);
 }
 
-function renderFindUsSection(sectionData,contentarea) {
+function renderFindUsSection(sectionData, contentarea) {
   if (!sectionData) return;
 
   const findusDiv = document.createElement("div");
   findusDiv.className = "findus";
+  findusDiv.id = "findus";
   contentarea.appendChild(findusDiv);
   renderSection(findusDiv, sectionData);
 
@@ -30,7 +38,6 @@ function renderFindUsSection(sectionData,contentarea) {
   mapDiv.style.width = "100%";
   mapDiv.style.height = "400px";
   contentarea.appendChild(mapDiv);
-    //Initialize map
-    initMap(sectionData.mapCoordinates);
-
+  //Initialize map
+  initMapFrame(sectionData.mapCoordinates);
 }

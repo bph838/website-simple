@@ -11,7 +11,12 @@
     />
     <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <link
       rel="apple-touch-icon"
@@ -19,15 +24,14 @@
       href="/images/favicon/apple-touch-icon.png"
     />
     <link rel="manifest" href="/site.webmanifest" />
-    <title><%= htmlWebpackPlugin.options.title %></title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRFfoeYdEGgxt2BnKRX41BSTKvsv3g7XA"></script>
+    <title><%= htmlWebpackPlugin.options.title %></title>   
   </head>
   <body>
     <%= htmlWebpackPlugin.options.navigation %>
     <main>
       <div id="hero"></div>
       <div id="contentarea"></div>
-    </main>    
+    </main>
     <%= htmlWebpackPlugin.options.footer %>
   </body>
 </html>

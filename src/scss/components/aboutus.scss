@@ -1,0 +1,10 @@
+.findus {
+  @extend .sections;
+}
+
+
+.findusholder{
+  .sectionImageWrapDiv{
+    max-width: 480px;
+  }
+}

@@ -16,6 +16,7 @@ export function renderSection(sectionsDiv, data) {
     }
   }
 
+  let classname = data.class || "";
   const pageSection = renderSectionHolder(sectionsDiv);
 
   //if there is a title lets render it
@@ -29,7 +30,7 @@ export function renderSection(sectionsDiv, data) {
   }
 
   const titleSectionInfoDiv = document.createElement("div");
-  titleSectionInfoDiv.className = "sectionInfoHolder";
+  titleSectionInfoDiv.className = "sectionInfoHolder "+ classname;
   pageSection.appendChild(titleSectionInfoDiv);
 
   switch (data.type) {
@@ -50,7 +51,7 @@ export function renderSection(sectionsDiv, data) {
 
 function renderSectionHolder(sectionsDiv) {
   const pageSection = document.createElement("section");
-  pageSection.className = "section";
+  pageSection.className = "section ";
   sectionsDiv.appendChild(pageSection);
 
   const pageSectionFlexDiv = document.createElement("div");
