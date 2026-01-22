@@ -1,5 +1,5 @@
-import { fetchJson } from "../functions/loadData";
-import { renderHero } from "../components/hero";
+import { fetchJson } from "../../functions/loadData";
+import { renderHero } from "../../components/hero";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import "photoswipe/style.css";
 
@@ -11,7 +11,7 @@ export function renderGallery(data) {
   if (data.content.hero) renderHero(data.content.hero);
 
   //need to load the gallery json from site
-  const siteGalleryPath = "/data/gallery.json";
+  const siteGalleryPath = "/data/media/gallery.json";
 
   const contentarea = document.getElementById("contentarea");
   if (!contentarea) {
@@ -26,6 +26,10 @@ export function renderGallery(data) {
   fetchJson(siteGalleryPath).then((galleryData) => {
     console.log("Gallery Data Loaded", galleryData);
     const externalPath = data.externalPath || "";
+    if(!galleryData){
+      console.log("no images");
+      return;
+    }
     //need to sort the images by date order
     galleryData.sort(
       (a, b) =>

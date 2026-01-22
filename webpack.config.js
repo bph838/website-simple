@@ -37,7 +37,8 @@ module.exports = (env, argv) => {
     entry: {
       index: "./src/js/index.js", // for index.html
       calendar: "./src/js/calendar.js", // for calendar.html
-      gallery: "./src/js/gallery.js", // for gallery.html
+      gallery: "./src/js/media/gallery.js", 
+      videos: "./src/js/media/videos.js", 
       aboutus: "./src/js/aboutus.js", // for about.html
       clubnews: "./src/js/club/clubnews.js",
       clubrules: "./src/js/club/clubrules.js",
@@ -93,9 +94,9 @@ module.exports = (env, argv) => {
       }),
 
       new HtmlWebpackPlugin({
-        filename: "gallery.html",
+        filename: "media/gallery.html",
         template: "./src/templates/main.html",
-        chunks: ["gallery"], // only include gallery.js
+        chunks: ["gallery"], 
         title: "Gallery - " + SITE_TITLE,
         templateParameters: {
           siteName: SITE_TITLE,
@@ -104,6 +105,22 @@ module.exports = (env, argv) => {
         navigation: navigation,
         footer: footer,
       }),
+        new HtmlWebpackPlugin({
+        filename: "media/videos.html",
+        template: "./src/templates/main.html",
+        chunks: ["videos"], 
+        title: "Videos - " + SITE_TITLE,
+        templateParameters: {
+          siteName: SITE_TITLE,
+        },
+        google_analytics: google_analytics,
+        navigation: navigation,
+        footer: footer,
+      }),
+
+
+
+
 
       new HtmlWebpackPlugin({
         filename: "aboutus.html",
