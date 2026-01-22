@@ -49,7 +49,7 @@ export function renderSection(sectionsDiv, data) {
       titleTextBar.appendChild(titleDateText);
 
       //create a link <i class="fa-solid fa-link"></i>
-      let linkId = makeSafeId(data.title + "-" + data.date);
+      let linkId = data.hash;//makeSafeId(data.title + "-" + data.date);
       let newsUrl = `/club/clubnews.html#${linkId}`;
       titleSectionDiv.id = linkId;
 
