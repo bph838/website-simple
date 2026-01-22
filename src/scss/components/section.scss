@@ -47,6 +47,12 @@
     float: left;
     padding-right: 1em;
   }
+  @include respond(pc) {
+    max-width: 480px;
+  }
+  @include respond(tablet) {
+    max-width: 360px;
+  }
   img {
     max-width: 100%;
     max-height: 100%;

@@ -155,7 +155,6 @@ module.exports = (env, argv) => {
                 },
                 () => {
                   const icsContent = generateICS();
-
                   compilation.emitAsset(
                     "calendar.ics",
                     new compiler.webpack.sources.RawSource(icsContent),
@@ -173,9 +172,9 @@ module.exports = (env, argv) => {
       }),
       //Split the news
       new SplitNewsSectionsPlugin({
-      input: "./src/data/pages/club/clubnews.json",
-      outputDir: "./src/data/pages/club/clubnews"
-    })
+        input: "./src/data/pages/club/clubnews.json",
+        outputDir: "./src/data/pages/club/clubnews",
+      }),
     ],
 
     optimization: {

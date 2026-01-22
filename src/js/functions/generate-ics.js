@@ -19,7 +19,9 @@ METHOD:PUBLISH
       date.replace(/[-:]/g, '').replace('.000Z', 'Z');
 
     const start = formatDate(event.start);
-    const end = event.end ? `\nDTEND:${formatDate(event.end)}` : '';
+    const end = event.end ? `\nDTEND:${formatDate(event.end)}` : '';    
+    const url = event.url;
+    
 
     ics += `
 BEGIN:VEVENT
@@ -27,6 +29,8 @@ UID:event-${index}@${siteDomain}
 DTSTAMP:${start}
 DTSTART:${start}${end}
 SUMMARY:${event.title}
+URL:${url}
+
 END:VEVENT
 `;
   });
