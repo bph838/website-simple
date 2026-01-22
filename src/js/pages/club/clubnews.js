@@ -1,5 +1,6 @@
 import { renderHero } from "../../components/hero";
 import { renderSection } from "../../components/section";
+import { setMeta,setPageTitle } from "../../functions/links";
 
 export function renderClubNews(data) {
   console.log("Rendering Club News Page");
@@ -33,6 +34,14 @@ export function renderClubNewsItem(data) {
   const sectionsDiv = document.createElement("div");
   sectionsDiv.className = "sectionitem";
   contentarea.appendChild(sectionsDiv);
+
+  if (data.title) {
+    setPageTitle(data.title);
+  }
+
+  if (data.image) {
+    setMeta("og:image", data.image);
+  }
 
   renderSection(sectionsDiv, data);
 }

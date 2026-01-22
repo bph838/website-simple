@@ -30,4 +30,5 @@ export function setupMenuCommands(root, activeClass = "page-homee") {
 
   initCopyrightYear();
   initMenuName(SITE_TITLE);
+   
 }
