@@ -1,9 +1,9 @@
 import { renderHero } from "../../components/hero";
-import { renderSection } from "../../components/section";
+import { renderSection,renderPDFLinks } from "../../components/section";
 
 export function renderClubMerch(data) {
   console.log("Rendering Club Merch Page");
-  //If there is a hero image render it
+
   if (data.content.hero) renderHero(data.content.hero);
 
   const contentarea = document.getElementById("contentarea");
@@ -16,7 +16,9 @@ export function renderClubMerch(data) {
 
     data.content.sections.forEach((section) => {
       const div = renderSection(sectionsDiv, section);
+      renderPDFLinks(div,section);
       renderClubMerchItems(div, section);
+      renderClubMerchSize(div, section);
     });
   }
 }
@@ -24,8 +26,8 @@ export function renderClubMerch(data) {
 function renderClubMerchItems(div, section) {
   console.log("Rendering Club Merch");
   if (!section.merch) return;
-    
-  div.style.display = 'block';
+
+  div.style.display = "block";
 
   const merchDiv = document.createElement("section");
   merchDiv.className = "merch";
@@ -50,4 +52,29 @@ function renderClubMerchItems(div, section) {
       merchItemDiv.appendChild(merchItemDesc);
     }
   });
+}
+
+function renderClubMerchSize(div, section) {
+  console.log("Rendering Club Merch Size");
+  if (!section.merch) return;
+
+  div.style.display = "block";
+
+  const merchDiv = document.createElement("section");
+  merchDiv.className = "merchsize";
+  div.appendChild(merchDiv);
+
+  const merchsizetitle = document.createElement("h2");  
+  merchsizetitle.innerHTML = "Size Guide";
+  merchDiv.appendChild(merchsizetitle);
+
+  const merchsizeimg1 = document.createElement("img");  
+  merchsizeimg1.src = "/images/merch/SIZE-GUIDE.png"
+  merchDiv.appendChild(merchsizeimg1);
+
+
+    const merchsizeimg2 = document.createElement("img");  
+  merchsizeimg2.src = "/images/merch/SIZE-GUIDE-2.png"
+  merchDiv.appendChild(merchsizeimg2);
+
 }

@@ -200,7 +200,7 @@ function renderSectionText(pageSection, text) {
   pageSection.appendChild(sectionParatext);
 }
 
-function renderPDFLinks(pageSection, data) {
+export function renderPDFLinks(pageSection, data) {
   console.log("Checking for PDF links to render");
   if (data.pdfs && data.pdfs.length > 0) {
     const pdfsDiv = document.createElement("div");

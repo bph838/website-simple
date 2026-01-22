@@ -6,9 +6,18 @@
     },
     "sections": [
       {
-        "title": "Club Merchandise",        
+        "title": "Club Merchandise",
         "type": "noImage",
-        "text": ["Choose from the items below and contact Paul."],
+        "text": [
+          "Please click on the link below to print an order form and return it to Paul Morgan"
+        ],
+        "pdfs": [
+          {
+            "text": "Order Form",
+            "url": "/data/documents/order-form-pdf.pdf"
+          }
+        ],
+
         "merch": [
           {
             "picture": "\\images\\merch\\T-Shirt-210x300.png",
@@ -30,7 +39,10 @@
             "picture": "\\images\\merch\\Fleece-Jacket-207x300.png",
             "desc": "\\images\\merch\\Fleece-Details-300x240.png"
           },
-          { "picture": "\\images\\merch\\Cap-225x300.png", "desc": "\\images\\merch\\Cap-Details-300x167.png" },
+          {
+            "picture": "\\images\\merch\\Cap-225x300.png",
+            "desc": "\\images\\merch\\Cap-Details-300x167.png"
+          },
           { "picture": "\\images\\merch\\Cup-207x300.jpg", "desc": "" }
         ]
       }
