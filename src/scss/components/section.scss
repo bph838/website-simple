@@ -115,19 +115,20 @@
 }
 
 .merch {
-  flex-basis: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 32%, 1fr), 1fr));
   gap: 20px;
-  justify-content: start;
+  justify-content: start; // or center if you want
+  max-width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
 }
 
 .merchholder {
-  min-width: 360px;
-  float: left;
+  display: flex;          // make it a flex column
   flex-direction: column;
   gap: 10px;
-  justify-content: start;
+  min-width: 0;           // <--- crucial, allow shrinking
 
   img {
     display: block;
@@ -139,4 +140,13 @@
 .sectionitem {
   @extend .sections;
   margin-top: 48px;
+}
+.merchsize{
+  width:100%;
+  
+    img {
+  width: 100%;
+  height: auto;   /* keeps aspect ratio */
+  display: block; 
+  }
 }
