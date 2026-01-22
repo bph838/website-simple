@@ -14,6 +14,11 @@ const { SITE_TITLE } = require("./src/js/constants.js");
 const { loadEnvFile } = require("process");
 const generateICS = require("./src/js/functions/generate-ics.js");
 
+const google_analytics = fs.readFileSync(
+  path.resolve(__dirname, "src/partials/google_analytics.html"),
+  "utf8",
+);
+
 const navigation = fs.readFileSync(
   path.resolve(__dirname, "src/partials/navigation.html"),
   "utf8",
@@ -68,6 +73,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
+        google_analytics:google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -79,6 +85,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
+        google_analytics:google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -91,6 +98,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
+        google_analytics:google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -103,6 +111,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
+        google_analytics:google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -115,6 +124,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
+        google_analytics:google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -126,6 +136,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
+        google_analytics:google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -137,6 +148,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
+        google_analytics:google_analytics,
         navigation: navigation,
         footer: footer,
       }),
