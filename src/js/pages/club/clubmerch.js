@@ -22,16 +22,14 @@ export function renderClubMerch(data) {
 }
 
 function renderClubMerchItems(div, section) {
-    console.log("Rendering Club Merch");
+  console.log("Rendering Club Merch");
   if (!section.merch) return;
+    
+  div.style.display = 'block';
 
-  //div.styles += "flex-wrap: wrap;";
-  div.style.flexWrap = 'wrap';
-
-   
-  const merchDiv = document.createElement("div");
+  const merchDiv = document.createElement("section");
   merchDiv.className = "merch";
-div.appendChild(merchDiv);
+  div.appendChild(merchDiv);
 
   section.merch.forEach((merch) => {
     const merchItemDiv = document.createElement("div");
@@ -44,9 +42,8 @@ div.appendChild(merchDiv);
       merchItemPic.src = merch.picture;
       merchItemDiv.appendChild(merchItemPic);
     }
-console.log("ls");
+    console.log("ls");
     if (merch.desc && merch.desc.length > 1) {
-        
       const merchItemDesc = document.createElement("img");
       merchItemDesc.className = "merchdesc";
       merchItemDesc.src = merch.desc;

@@ -111,19 +111,32 @@
   }
 }
 
-
-.merch {
-  flex-basis: 100%; /* takes the full width of the parent */
-  /* optional styling */
-  margin-top: 10px; /* spacing from previous row */
+.sectionInfoHolder {
+  align-items: flex-start;
 }
 
-.merchholder{
-  max-width: 300x;
-  height:auto;
+.merch {
+  flex-basis: 100%;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(320px, 1fr)
+  ); 
+  gap: 20px;
+  justify-content: start;
+}
 
-  display:block;
-  float:left;
-  
+.merchholder {
+  min-width: 360px;
+  float: left;
   border: 1px black;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: start;
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
 }
