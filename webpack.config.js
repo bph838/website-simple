@@ -8,18 +8,19 @@ const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const HtmlWebpackPartialsPlugin = require("html-webpack-partials-plugin");
+const UpdateNewsHashesPlugin = require("./webpack/plugins/UpdateNewsHashesPlugin");
+const SplitNewsSectionsPlugin = require("./webpack/plugins/SplitNewsSectionsPlugin");
 const { SITE_TITLE } = require("./src/js/constants.js");
 const { loadEnvFile } = require("process");
 const generateICS = require("./src/js/functions/generate-ics.js");
 
 const navigation = fs.readFileSync(
   path.resolve(__dirname, "src/partials/navigation.html"),
-  "utf8"
+  "utf8",
 );
 const footer = fs.readFileSync(
   path.resolve(__dirname, "src/partials/footer.html"),
-  "utf8"
+  "utf8",
 );
 
 module.exports = (env, argv) => {
@@ -34,7 +35,7 @@ module.exports = (env, argv) => {
       gallery: "./src/js/gallery.js", // for gallery.html
       aboutus: "./src/js/aboutus.js", // for about.html
       clubnews: "./src/js/club/clubnews.js",
-      clubrules: "./src/js/club/clubrules.js",      
+      clubrules: "./src/js/club/clubrules.js",
       clubmerch: "./src/js/club/clubmerch.js",
     },
     output: {
@@ -52,7 +53,7 @@ module.exports = (env, argv) => {
     plugins: [
       new CopyWebpackPlugin({
         patterns: [
-          { from: "src/data", to: "data" },          
+          { from: "src/data", to: "data" },
           { from: "src/images", to: "images" },
           { from: "src/favicon.ico", to: "." },
           { from: "src/site.webmanifest", to: "." },
@@ -109,7 +110,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         filename: "club/clubnews.html",
         template: "./src/templates/main.html",
-        chunks: ["clubnews"], 
+        chunks: ["clubnews"],
         title: "Club News - " + SITE_TITLE,
         templateParameters: {
           siteName: SITE_TITLE,
@@ -120,14 +121,14 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         filename: "club/clubrules.html",
         template: "./src/templates/main.html",
-        chunks: ["clubrules"], 
+        chunks: ["clubrules"],
         title: "Club Rules - " + SITE_TITLE,
         templateParameters: {
           siteName: SITE_TITLE,
         },
         navigation: navigation,
         footer: footer,
-      }),      
+      }),
       new HtmlWebpackPlugin({
         filename: "club/clubmerch.html",
         template: "./src/templates/main.html",
@@ -157,15 +158,24 @@ module.exports = (env, argv) => {
 
                   compilation.emitAsset(
                     "calendar.ics",
-                    new compiler.webpack.sources.RawSource(icsContent)
+                    new compiler.webpack.sources.RawSource(icsContent),
                   );
-                }
+                },
               );
-            }
+            },
           );
         },
       },
       ///////
+      //Update club news hash
+      new UpdateNewsHashesPlugin({
+        filePath: "./src/data/pages/club/clubnews.json",
+      }),
+      //Split the news
+      new SplitNewsSectionsPlugin({
+      input: "./src/data/pages/club/clubnews.json",
+      outputDir: "./src/data/pages/club/clubnews"
+    })
     ],
 
     optimization: {
