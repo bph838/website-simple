@@ -1,26 +1,26 @@
-// Toggle global options
-$enable-gradients: true;
-$enable-shadows: true;
-$offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-//$font-family-sans-serif: "Times New Roman", "Dosis", "Helvetica Neue", Helvetica,  Arial, sans-serif;
-$body-color: #333;
-$body-bg: #fff;
-$border-radius: 0.4rem;
-$success: #7952b3;
 
+/*// 1. Load your custom overrides first
+@use "bootstrapConfig" as *;
 
-@import "./bootstrapImport";
-@import "./response.scss";
+// 2. Load Bootstrap safely
+@use "bootstrap" with (
+  $enable-gradients: $enable-gradients,
+  $enable-shadows: $enable-shadows,
+  $offcanvas-box-shadow: $offcanvas-box-shadow,
+  $body-color: $body-color,
+  $body-bg: $body-bg,
+  $border-radius: $border-radius,
+  $success: $success
+);
+*/
 
-@import "./components/navbar.scss";
-@import "./components/hero.scss";
-@import "./components/footer.scss";
-@import "./components/section.scss";
-@import "./components/aboutus.scss";
-@import "./components/gallery.scss";
-@import "./components/map.scss";
-@import "./components/club.scss";
-
-
-
-
+// 3. Load your own SCSS components
+@use "./response.scss" as *;
+@use "./components/navbar.scss" as *;
+@use "./components/hero.scss" as *;
+@use "./components/footer.scss" as *;
+@use "./components/section.scss" as *;
+@use "./components/aboutus.scss" as *;
+@use "./components/gallery.scss" as *;
+@use "./components/map.scss" as *;
+@use "./components/club.scss" as *;

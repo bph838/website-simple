@@ -1,5 +1,4 @@
 "use strict";
-"use strict";
 
 const fs = require("fs");
 const path = require("path");
@@ -12,6 +11,7 @@ const UpdateNewsHashesPlugin = require("./webpack/plugins/UpdateNewsHashesPlugin
 const SplitNewsSectionsPlugin = require("./webpack/plugins/SplitNewsSectionsPlugin");
 const { SITE_TITLE } = require("./src/js/constants.js");
 const { loadEnvFile } = require("process");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const generateICS = require("./src/js/functions/generate-ics.js");
 
 const google_analytics = fs.readFileSync(
@@ -41,7 +41,9 @@ module.exports = (env, argv) => {
       aboutus: "./src/js/aboutus.js", // for about.html
       clubnews: "./src/js/club/clubnews.js",
       clubrules: "./src/js/club/clubrules.js",
-      clubmerch: "./src/js/club/clubmerch.js",
+      clubmerch: "./src/js/club/clubmerch.js",   
+       styles: "./src/scss/styles.scss",  
+
     },
     output: {
       filename: "[name].bundle.js", // main.bundle.js, about.bundle.js
@@ -73,7 +75,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
-        google_analytics:google_analytics,
+        google_analytics: google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -85,7 +87,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
-        google_analytics:google_analytics,
+        google_analytics: google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -98,7 +100,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
-        google_analytics:google_analytics,
+        google_analytics: google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -111,7 +113,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
-        google_analytics:google_analytics,
+        google_analytics: google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -124,7 +126,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
-        google_analytics:google_analytics,
+        google_analytics: google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -136,7 +138,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
-        google_analytics:google_analytics,
+        google_analytics: google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -148,7 +150,7 @@ module.exports = (env, argv) => {
         templateParameters: {
           siteName: SITE_TITLE,
         },
-        google_analytics:google_analytics,
+        google_analytics: google_analytics,
         navigation: navigation,
         footer: footer,
       }),
@@ -187,6 +189,10 @@ module.exports = (env, argv) => {
         input: "./src/data/pages/club/clubnews.json",
         outputDir: "./src/data/pages/club/clubnews",
       }),
+      //css
+      new MiniCssExtractPlugin({
+        filename: "[name].css", // output CSS file name
+      }),
     ],
 
     optimization: {
@@ -205,36 +211,24 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.css$/i,
-          use: ["style-loader", "css-loader"],
-        },
-        {
-          test: /\.(scss)$/i,
+          test: /\.scss$/i,
           use: [
-            "style-loader",
-            "css-loader",
+            MiniCssExtractPlugin.loader, // extract CSS to separate file
+            "css-loader", // translates CSS into CommonJS
+            "postcss-loader", // optional, for autoprefixing
             {
-              loader: "postcss-loader",
-              options: {
-                postcssOptions: {
-                  plugins: [autoprefixer],
-                },
-              },
-            },
-            {
-              loader: "sass-loader",
+              loader: "sass-loader", // compiles SCSS to CSS
               options: {
                 sassOptions: {
-                  silenceDeprecations: [
-                    "color-functions",
-                    "global-builtin",
-                    "import",
-                    "if-function",
-                  ],
+                  quietDeps: true, // <- hides warnings from dependencies like Bootstrap
                 },
               },
             },
           ],
+        },
+        {
+          test: /\.css$/i,
+          use: [MiniCssExtractPlugin.loader, "css-loader"],
         },
         {
           test: /\.(png|jpe?g|gif|svg|webp)$/i,

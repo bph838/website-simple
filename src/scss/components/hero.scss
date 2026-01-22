@@ -1,7 +1,9 @@
+@use "../response" as *;
+
 .hero {
-  @extend .d-flex;
-  @extend .align-items-center;
-  @extend .text-white;
+  display: flex !important;
+  align-items: center;
+  color: #fff !important;
 
   @include respond(phone) {
     padding-top: 30px;
@@ -23,8 +25,10 @@
     //opacity: 0.8;
 
     h1 {
-      @extend .display-4;
-      @extend .fw-bold;
+      font-size: 3.5rem;
+      font-weight: 300;
+      line-height: 1.2;
+      font-weight: 700 !important;
       color: white;
       font-size: 24px;
       @include respond(tablet) {

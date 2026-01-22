@@ -7,7 +7,7 @@
  * Expects each nav-link to have a `data-menu` attribute matching the ID of its target section.
  */
 
-import { Collapse } from "bootstrap";
+//import { Collapse } from "bootstrap";
 import { initCopyrightYear, initMenuName } from "../components/pageupdates";
 const { SITE_TITLE } = require("../constants");
 
@@ -15,7 +15,7 @@ export function setupMenuCommands(root, activeClass = "page-homee") {
   console.info("setupMenuCommands");
   const navbarCollapseEl = root.querySelector(".navbar-collapse");
   if (!navbarCollapseEl) return;
-  const navbarCollapse = new Collapse(navbarCollapseEl, { toggle: false });
+  //const navbarCollapse = new Collapse(navbarCollapseEl, { toggle: false });
 
   //need to set acive menu item
   const navLinks = root.querySelectorAll(".nav-link");
