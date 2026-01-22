@@ -1,4 +1,4 @@
-@use "../response" as *; 
+@use "../response" as *;
 
 #page-content {
   padding: 0;
@@ -114,9 +114,23 @@
   align-items: flex-start;
 }
 
+.sectionitem {
+  @extend .sections;
+  margin-top: 48px;
+}
+.merchsize {
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: auto; /* keeps aspect ratio */
+    display: block;
+  }
+}
+
 .merch {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 32%, 1fr), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   justify-content: start; // or center if you want
   max-width: 100%;
@@ -125,28 +139,14 @@
 }
 
 .merchholder {
-  display: flex;          // make it a flex column
+  display: flex; // make it a flex column
   flex-direction: column;
   gap: 10px;
-  min-width: 0;           // <--- crucial, allow shrinking
+  min-width: 0; // <--- crucial, allow shrinking
 
   img {
     display: block;
     max-width: 100%;
     height: auto;
-  }
-}
-
-.sectionitem {
-  @extend .sections;
-  margin-top: 48px;
-}
-.merchsize{
-  width:100%;
-  
-    img {
-  width: 100%;
-  height: auto;   /* keeps aspect ratio */
-  display: block; 
   }
 }
