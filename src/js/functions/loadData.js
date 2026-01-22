@@ -3,6 +3,7 @@
 
 export async function fetchJson(url) {
   try {
+    console.log(`Fetching: ${url}`)
     const response = await fetch(url); // fetch the URL
 
     // Check for HTTP errors

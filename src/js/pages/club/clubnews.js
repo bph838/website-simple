@@ -25,3 +25,14 @@ export function renderClubNews(data) {
     });
   }
 }
+
+export function renderClubNewsItem(data) {
+  console.log("Rendering Club News Page Item");
+  //Render section
+  const contentarea = document.getElementById("contentarea");
+  const sectionsDiv = document.createElement("div");
+  sectionsDiv.className = "sectionitem";
+  contentarea.appendChild(sectionsDiv);
+
+  renderSection(sectionsDiv, data);
+}
