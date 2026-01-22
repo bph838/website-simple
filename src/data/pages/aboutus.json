@@ -34,6 +34,13 @@
           ,"Guest Fliers are always welcome to join us, we prefer them to be current BMFA members and ask them to carry their card when on our site. They must be accompanied at all times when in possession of an aircraft by the inviting member, who will have cleared their visit with the Chair, Vice chair, Treasurer or Secretary beforehand. They are limited to a MAXIMUM of two visits per year and are the members sole responsibility."
           
         ]
+    },{
+      "title":"Contact Us",
+      "type": "wrappedTextLeft",
+      "image": "images/contactus.jpg",
+        "text": [
+          "If you want to contact us please reach out through our Facebook page."          
+        ]
     }]
     
   }
