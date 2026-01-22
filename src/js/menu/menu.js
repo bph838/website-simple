@@ -8,10 +8,10 @@
  */
 
 import { Collapse } from "bootstrap";
-import { scrollToElement } from "../components/scrolling";
+import { initCopyrightYear, initMenuName } from "../components/pageupdates";
+const { SITE_TITLE } = require("../constants");
 
 export function setupMenuCommands(root, activeClass = "page-homee") {
-
   console.info("setupMenuCommands");
   const navbarCollapseEl = root.querySelector(".navbar-collapse");
   if (!navbarCollapseEl) return;
@@ -19,47 +19,15 @@ export function setupMenuCommands(root, activeClass = "page-homee") {
 
   //need to set acive menu item
   const navLinks = root.querySelectorAll(".nav-link");
-  navLinks.forEach((link) => {  
+  navLinks.forEach((link) => {
     const page = link.dataset.page;
     if (page === activeClass) {
       link.classList.add("active");
     } else {
       link.classList.remove("active");
-    }  
+    }
   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /*
-
-  navLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      const menu = link.dataset.menu;
-      const el = document.getElementById(menu);
-      if (!el) return;
-
-      // Active state
-      navLinks.forEach((l) => l.classList.remove("active"));
-      link.classList.add("active");
-
-      // Close menu FIRST
-      navbarCollapse.hide();      
-    });
-  });*/
+  initCopyrightYear();
+  initMenuName(SITE_TITLE);
 }

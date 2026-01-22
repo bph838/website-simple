@@ -2,19 +2,14 @@ const { SITE_TITLE } = require("../constants");
 // Import our custom CSS
 import "../../scss/styles.scss";
 
-
-import 'bootstrap';  
+import "bootstrap";
 
 //import $ from "jquery";
 import { setupMenuCommands } from "../menu/menu";
-import { initCopyrightYear, initMenuName } from "../components/pageupdates";
-import {renderClubMerch} from "../pages/club/clubmerch";
+import { renderClubMerch } from "../pages/club/clubmerch";
 
-import data from '../../data/pages/club/clubmerch.json';  
+import data from "../../data/pages/club/clubmerch.json";
 console.log(data);
 
-setupMenuCommands(document,"page-clubmerch");
-renderClubMerch(data)
-
-initCopyrightYear();
-initMenuName(SITE_TITLE);
+setupMenuCommands(document, "page-clubmerch");
+renderClubMerch(data);
